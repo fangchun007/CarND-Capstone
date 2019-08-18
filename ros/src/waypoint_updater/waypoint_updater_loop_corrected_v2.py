@@ -271,13 +271,13 @@ class WaypointUpdater(object):
 	    # if the car is close enough to the stop line, stop it any away
 	    #for i in range(len(self.current_waypoints_list)):
        	        #self.set_waypoint_velocity(self.current_waypoints_list, i, 0.0)
-	if S < self.current_velocity**2/(2.0*4.0):
+	if S < -(self.current_velocity**2)/(2.0*4.0):
 	    # here I assume decel_limit=-4.0
 	    self.accelerate()
 	else:
 	    # calculate deceleration by supposing the car slow down from the very
 	    # beginning
-	    deceleration = max(v0**2/(2*S), 0.5)
+	    deceleration = max(-(v0**2)/(2*S), 0.5)
 
 	    self.decelerate_from_beginning(stop_index, deceleration)
 
